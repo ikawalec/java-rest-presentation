@@ -1,0 +1,73 @@
+\documentclass{beamer}
+
+\usetheme{Boadilla}
+
+\usepackage[MeX]{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\usepackage{color}
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+\definecolor{light-gray}{gray}{0.75}
+
+\lstset{
+  basicstyle=\ttfamily, 
+  columns=fullflexible, 
+  showstringspaces=false,  
+  commentstyle=\color{gray}\upshape,
+  basicstyle=\footnotesize,
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  tabsize=2,
+  keywordstyle=\color{cyan}, 
+}
+ 
+\lstdefinelanguage{XML}
+{
+  morekeywords={xmlns,version,type}% list your attributes here
+}
+
+\lstdefinelanguage{SQL}
+{  
+  morekeywords={aa,TABLE,XML,SCHEMA,COLLECTION,varchar,UPDATE,PRIMARY,INDEX,USING,FOR,WHERE,xml,int,CALLER,DECLARE,CREATE,PROCEDURE,
+  OUTPUT,WITH,EXECUTE,AS,SET,CROSS,APPLY,AS,SELECT,FROM,aa}
+}
+
+\lstdefinelanguage{XQuery}
+{
+  morekeywords={declare,namespace,for,in,order,by,return}
+}
+
+\title{Application programming - Java and XML technologies}
+\subtitle{REST: Java}
+
+\author{Mateusz Bilski \and Ireneusz Kawalec}
+ 
+\institute[Wroclaw University of Technology]
+   
+\date{09.05.2013}
+
+\AtBeginSection[]
+{
+	\begin{frame}
+    	\frametitle{Spis treści}
+    	\tableofcontents[currentsection]
+  	\end{frame}
+}
+   
+\begin{document} 
+	\begin{frame}
+		\titlepage
+	\end{frame}
+	
+	\include{introduction}
+	% \include{examples}
+	% \include{ending}
+	
+\end{document}

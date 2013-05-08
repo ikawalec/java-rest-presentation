@@ -1,0 +1,215 @@
+\section{XML jako typ danych}
+
+\subsection{Kompatybilność}
+	\begin{frame}{Kompatybilność}
+		Obsługa XML 
+		\begin{itemize}
+			\item Microsoft SQL Server 2005 +
+		\end{itemize}
+	
+		Środowisko testowe 
+		\begin{itemize} 
+			\item Microsoft SQL Server 2008 Management Studio Express
+		  	\item Microsoft SQL Server Management Studio Express
+		\end{itemize}
+	\end{frame}
+
+\subsection{Typ XML}
+	\begin{frame}{XML w MsSQL}		
+		\begin{columns}[c]
+		    \column{.5\textwidth}
+		    	Typ xml wprowadzony w SQL Server 2005.
+		    	
+		    	Użycie
+		    	\begin{itemize}
+					\item kolumny tabel
+				  	\item zmienne
+				  	\item parametry procedur
+				\end{itemize}
+		    \column{.5\textwidth}
+		    	\includegraphics[scale=0.5]{img/type.png}\\
+				\lstinputlisting[language=SQL]{code/xml_type_sample.sql}				
+	    \end{columns}
+	\end{frame}
+
+\subsection{Typowany i nietypowany XML}
+	\begin{frame}{Typowany i nietypowany XML (typed vs untyped XML)}		
+		Typowany XML = XML + XML SCHEMA
+		
+		Kiedy używać nietypowanego?
+		\begin{itemize}
+		  \item brak schematu xml
+		  \item validacja po stronie klienta
+		\end{itemize}
+		
+		A kiedy typowanego?
+		\begin{itemize}
+		  \item validacja na serwerze
+		  \item kwestie optymalizacyjne
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Tworzenie Typed XML}
+		Zdefiniowanie schematu xml		
+		\lstinputlisting[language=SQL]{code/create_schema.sql}
+		Przypisanie schematu do kolumny typu xml
+		\includegraphics[scale=0.5]{img/schema.png}
+		\lstinputlisting[language=SQL]{code/create_table.sql}
+	\end{frame}
+
+\subsection{Wyszukiwanie elementów w XML}
+	\begin{frame}{XQuery i XPath}
+		\begin{itemize}
+		  \item XQuery - XML Query Language
+		  \item XPath - XML Path Language
+		  \item wykorzystywane w funkcjach query(), value(), exist(), nodes(),
+		  modify()
+		\end{itemize}
+		Na co pozwala
+		\begin{itemize}
+		  \item pobieranie informacji na podstawie zadanego kryterium
+		  \item filtrowanie wyników
+		  \item przeszukiwanie
+		  \item łączenie danych z kilku dokumentów
+		  \item sortowanie, grupowanie, agregowanie
+		  \item obliczenia arytmetyczne, manipulacja łańcuchami znaków
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Funkcja query}	
+		Funkcja do zwracanie częsci dokumentu XML.
+		\begin{columns}[t]		
+		    \column{.4\textwidth}	    	
+		    	\begin{itemize}
+				  \item wywoływana na instancji XML
+				  \item jako parametr przyjmuje wyrażenie XQuery 
+				  \item zwraca rezultat wykonanego wyrażenia
+				\end{itemize}
+		    \column{.6\textwidth}
+		    	Komenda:
+				\lstinputlisting[language=SQL]{code/query.sql}
+				Output:	
+				\lstinputlisting[language=XML]{code/query_output.xml}			
+	    \end{columns}
+	\end{frame}
+	
+	\begin{frame}{Funkcja value}
+		Funkcja do pobierania wartości znacznika lub parametru, zwracanego przez
+		wyrażenie XQuery
+		 	
+	   	\begin{itemize}
+		  \item parametry funkcji to wyrażenie XQuery i typ SQL-owy 
+		  \item wartość zwracaną konwertuje na typ SQL-owy z typu XSD 
+		\end{itemize}
+		
+	   	Komenda:
+		\lstinputlisting[language=SQL]{code/value.sql}
+		Output:	
+		\lstinputlisting[language=XML]{code/value_output.xml}	  		
+	\end{frame}
+	
+	\begin{frame}{Funkcja exist}
+		Funkcja sprawdzająca czy istnieje fragmentu xml.
+		 	
+	   	\begin{itemize}
+		  \item parametry funkcji to wyrażenie XQuery
+		  \item zwraca 1 jeżeli istnieje, i 0 przeciwnie.
+		\end{itemize}
+		
+	   	Komenda:
+		\lstinputlisting[language=SQL]{code/exist.sql}
+		Output:	
+		\lstinputlisting[language=XML]{code/exist_output.xml}  		
+	\end{frame}
+	
+	\begin{frame}{Funkcja nodes}
+		Funkcja przekształcająca znaczniki (nodes) na wiersze.
+		 	
+	   	\begin{itemize}
+		  \item parametry funkcji to wyrażenie XQuery
+		  \item po funkcji należy podać tabele i kolumne
+		  \item zwraca znaczniki (nodes) wskazane przez wyrażenie XQuery
+		\end{itemize}
+		
+	   	Komenda:
+		\lstinputlisting[language=SQL]{code/nodes.sql}
+		Output:	
+		\lstinputlisting[language=XML]{code/nodes_output.xml}  		
+	\end{frame}
+
+\subsection{Modyfikacja XML}
+	\begin{frame}{XML DML}
+		XML DML - XML Data Modification Language
+		
+		Rozszerzenie XQuery o 3 słowa kluczowe 	
+	   	\begin{itemize}
+		  \item insert
+		  \item delete
+		  \item replace value of
+		\end{itemize}
+		
+		Atrybuty, których nie można dodawać, usuwać ani modyfikować
+		\begin{itemize}
+		  \item dla typed XML
+		  	\begin{itemize}
+		  		\item xsi:nil
+		  		\item xs:type
+		  	\end{itemize} 
+		  	\item dla untyped i typed XML
+		  	\begin{itemize}
+		  		\item xmlsn
+		  		\item xmlns:*
+		  		\item xml:base
+		  	\end{itemize} 
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Funkcja modify}
+		Modyfikuje zawartość dokumentu XML.
+		 	
+	   	\begin{itemize}
+		  \item parametry funkcji to wyrażenie XML DML
+		  \item może zwrócić tylko error
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}{Dodawanie elementów}
+		Składnia wyrażenia insert
+		\lstinputlisting[language=SQL]{code/insert_syntax.sql}
+	
+		Przykład
+		\lstinputlisting[language=SQL]{code/insert.sql}
+	\end{frame}
+	
+	\begin{frame}{Modyfikacja elementów}
+		Składnia wyrażenia replace value of
+		\lstinputlisting[language=SQL]{code/replace_syntax.sql}
+	
+		Przykład
+		\lstinputlisting[language=SQL]{code/replace.sql}
+	\end{frame}
+	
+	\begin{frame}{Usuwanie elementów}
+		Składnia wyrażenia delete
+		\lstinputlisting[language=SQL]{code/delete_syntax.sql}
+	
+		Przykład
+		\lstinputlisting[language=SQL]{code/delete.sql}
+	\end{frame}
+
+\subsection{Indeksy xml-owe}
+	\begin{frame}{XML Index}
+		\begin{itemize}
+		  \item Primary XML Index
+		  	\begin{itemize}
+		  		\item Indeksuje tagi, wartości i ścieżki w instancjach XML w kolumnie XML
+			  	\item Wymaga clustered index na kluczu głównym
+		  	\end{itemize}
+		  \item Secondary XML Index
+		  	\begin{itemize}
+		  	  \item Wymaga Primary XML Index
+		  	  \item Są 3 typy: PATH, VALUE, PROPERTY
+		  	\end{itemize}
+		\end{itemize} 
+		\lstinputlisting[language=SQL]{code/indexes.sql}
+	\end{frame}

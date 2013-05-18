@@ -1,5 +1,5 @@
-.pdf
-.gz
+*.pdf
+*.gz
 .project
 tmp
 .texlipse

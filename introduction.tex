@@ -1,5 +1,3 @@
-\section{Basic informations}
-
 \subsection{What is REST?}
 	\begin{frame}{REST - Representational State Transfer}
 		%\begin{columns}[c]
@@ -47,27 +45,55 @@
 		  \item GET - return the specified user
 		  \item PUT - update the user or if it doesn't exists, create it
 		  \item POST - create a new user with specified URI
-		  \item DELETE - remove the addressed uses
+		  \item DELETE - remove the addressed user
 		\end{itemize}
 	\end{frame}	
-	
-
   
-\subsection{JAX-RS}
-	\begin{frame}{JAX-RS}
+\subsection{JAX-RS API}
+	\begin{frame}{What is JAX-RS?}
+		JAX-RS - Java API for RESTful Web Services
+	
     	\begin{itemize}
 			\item it is a Java programming language API that provides support in creating web services according to REST architectural pattern
 			\item JAX-RS uses annotations
+			\item introduced in JAVA SE 5
+			\item an official part of JAVA EE 6 since version 1.1
 		\end{itemize}
 	\end{frame}
 	
-\subsection{Java libraries}
-	\begin{frame}{Java libraries}
+	\begin{frame}{JAX-RS specification}
+		JAX-RS provides annotations to map resource class as a web resource.
 		\begin{itemize}
-			\item Jersey
-			\item Jackson
-			\item Apache-CXF
-		\end{itemize}
+		  \item @Path - specified the relative path for a resource class or method
+		  \item @GET, @PUT, @POST, @DELETE - speficy the HTTP request type of a resource
+		  \item @Produces - specifies the response internet media types
+		  \item @Consumes - specifies the accepted request internet media types
+		\end{itemize}	
 	\end{frame}
 	
-	
+	\begin{frame}{JAX-RS annotations for methods}
+		Annotation for method parameters:
+		\begin{itemize}
+		  \item @PathParam - binds parameter to a path segment
+		  \item @QueryParam - value of an HTTP query parameter
+		  \item @HeaderParam - value of an HTTP header
+		  \item @CookieParam - value of a cookie
+		  \item @FormParam - value of a form
+		  \item @DefaultValue - speficies a default value for above bindings when the key is not found
+		  \item @Context - returns the entire context of the object (for instance HttpServlerRequest) 
+		\end{itemize}
+	\end{frame}
+		
+	\begin{frame}{JAX-RS Example}
+		\lstinputlisting[language=SQL]{code/UserService.java}
+	\end{frame}	
+		
+	\begin{frame}{Implementation of JAX-RS}
+		\begin{itemize}
+			\item Jersey - the reference implementation from Oracle
+			\item Apache CXF - open source web service framework 
+			\item Restlet - created by Jerome Louvel, a pioneer in REST frameworks
+			\item RESTeasy - Jboss's implementation
+			\item and more
+		\end{itemize}
+	\end{frame}

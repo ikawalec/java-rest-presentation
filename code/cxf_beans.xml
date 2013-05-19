@@ -1,0 +1,5 @@
+<jaxrs:server id="UserService" address="/api">
+	<jaxrs:serviceBeans>
+    	<ref bean="UserServiceImpl" />
+   	</jaxrs:serviceBeans>
+</jaxrs:server>

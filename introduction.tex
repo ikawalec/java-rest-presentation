@@ -5,10 +5,11 @@
 		%\begin{columns}[c]
 		    %\column{.4\textwidth}
 		    	\begin{itemize}
-				  \item służy do reprezentacji danych
-				  \item niezależny od platformy
-				  \item przypomina HTML 
-				  \item specyfikowany przez W3C   
+				  \item architectural style developed by W3C in parallel with HTTP/1.1
+				  \item simple, stateless, client-server architecture that generally runs over HTTP 
+				  \item lightweight alternative to RPC, SOAP, WSDL, CORBA
+				  \item often used in mobile and web applications
+				  \item server provides resources, identified by URI which can be managed by requests from clients
 				\end{itemize}
 		    %\column{.6\textwidth}
 		    %	\lstinputlisting[language=XML]{code/xml_sample_2.xml}
@@ -16,12 +17,41 @@
 	\end{frame}
 	
 \subsection{RESTful web services} 
-	\begin{frame}{Why should you use RESTful web services?}
-    	\begin{itemize}
-			\item item1
-			\item item1
+	
+	\begin{frame}{RESTful web services}	
+		RESTful Web Services are web API implemented using HTTP and the principles of REST.	
+		
+		\vspace{1cm}
+		
+		It is a collection of resources which have:
+		\begin{itemize}
+		  \item the base URI for the web API
+		  \item the internet media type of the data. (e.g., JSON, XML)
+		  \item the set of operations supported by the web API using HTTP methods (e.g., GET, PUT, POST or DELETE)
 		\end{itemize}
-	\end{frame}
+	\end{frame}	
+	
+	\begin{frame}{RESTful HTTP methods}	
+		For collection URI - http://example.com/users
+		\begin{itemize}
+		  \item GET - return a list of users
+		  \item PUT - replace the entire collection with another collection
+		  \item POST - create a new user and generate the URI for that entry
+		  \item DELETE - remove all users
+		\end{itemize}
+		
+		\vspace{1cm}
+		
+		For element URI - http://example.com/users/wojciech90
+		\begin{itemize}
+		  \item GET - return the specified user
+		  \item PUT - update the user or if it doesn't exists, create it
+		  \item POST - create a new user with specified URI
+		  \item DELETE - remove the addressed uses
+		\end{itemize}
+	\end{frame}	
+	
+
   
 \subsection{JAX-RS}
 	\begin{frame}{JAX-RS}

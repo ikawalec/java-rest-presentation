@@ -10,16 +10,53 @@
 	
 	\begin{frame}{Configuring services in container with Spring}
 		To register services you need to add cxf servlet definition to web.xml
-		\lstinputlisting[language=SQL]{code/cxf_web.xml}
-		And service bean to spring's bean.xml
-		\lstinputlisting[language=SQL]{code/cxf_beans.xml}
-	\end{frame}
-	
-	\begin{frame}{Interceptors in Apache CXF}
-
+		\lstinputlisting[language=XML]{code/cxf_web.xml}
+		And service bean to spring's beans.xml
+		\lstinputlisting[language=XML]{code/cxf_beans.xml}
 	\end{frame}
 	
 	\begin{frame}{Apache CXF REST client}
-
+		You can use the service interfaces on client side to produce client which will act like proxy.
+		
+		\lstinputlisting[language=JAVA]{code/SampleApplication.java}
+		
+		Client definition in client's beans.xml
+		\lstinputlisting[language=XML]{code/client_beans.xml}
 	\end{frame}
-
+	
+	\begin{frame}{Interceptors in Apache CXF}
+		Using interceptors you can read and manipulate request or response before it reach service implementation.
+		
+		\lstinputlisting[language=JAVA]{code/SampleInterceptor.java}
+		
+		Interceptor definition in beans.xml
+		\lstinputlisting[language=XML]{code/cxf_interceptor.xml}
+	\end{frame}
+	
+	\begin{frame}{Providers in Apache CXF}
+		You can use built-in JAXB or Jackson providers for JSON/XML serialization or create a custom one.
+		  
+		\lstinputlisting[language=JAVA]{code/CustomProvider.java}	
+		   
+		Provider definition in beans.xml
+		\lstinputlisting[language=JAVA]{code/cxf_providers.xml}
+	\end{frame}
+	
+	\begin{frame}{Exception handling in Apache CXF}
+		It is possible to prepare custom exception mapper for your given exception type and handle it nicely.
+		
+		\lstinputlisting[language=JAVA]{code/ExceptionMapper.java} 
+		
+		Exception Mapper definition in beans.xml
+		\lstinputlisting[language=XML]{code/cxf_exception.xml} 
+	\end{frame}
+	
+	\begin{frame}{CXF Advanced Features}
+		\begin{itemize}
+		  \item multiparts - mapping to InputStream, DataSource or custom Java types
+		  \item failover and load distribution - alternate addresses in case of connection failures or heavy load
+		  \item complex search queries - mapping query parameters to a bean
+		  \item integration with OSGi
+		  \item bean with implementation can support JAX-RS and JAX-WS at the same time			
+		\end{itemize}
+	\end{frame}

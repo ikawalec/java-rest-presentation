@@ -1,7 +1,7 @@
 \documentclass[gray]{beamer}
 
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[page number]{}
+\setbeamertemplate{footline}[page number]{} 
 
 \usepackage[MeX]{polski}
 \usepackage[utf8]{inputenc}
@@ -15,7 +15,7 @@
 \definecolor{light-gray}{gray}{0.75}
  
 \lstset{
-  basicstyle=\ttfamily,  
+  basicstyle=\ttfamily,   
   columns=fullflexible, 
   showstringspaces=false,  
   commentstyle=\color{gray}\upshape,
@@ -62,18 +62,18 @@
 }
    
 \begin{document} 
-	\begin{frame}
+	\begin{frame} 
 		\titlepage
 	\end{frame}
 	
 	\section{Basic informations}
 		\include{introduction}
 	
-	\section{JAX-RS implementations}
-		\include{cxf} 
+	\section{JAX-RS implementations} 
 		\include{jersey}
+		\include{cxf}  
 		\include{restlet}
-		\include{resteasy}
+		\include{resteasy} 
 	   		
 	\include{ending}
 	

@@ -1,5 +1,26 @@
 \subsection{Jersey}
 	\begin{frame}{Introduction to Jersey}
-	
+		\begin{itemize}
+		  \item Implementation of JAX-RS delivered Oracle
+		  \item Provides very rich and robust API for implementing RESTful Services, including client library
+		  \item Shipped with the application server GlassFish
+		  \item Jersey Test Framework (Grizzly Server)
+		\end{itemize}
 	\end{frame}
+ 
+\begin{frame}{Jersey - Sample server}
+	\lstinputlisting[language=Java]{code/ProductListSerivce.java}  
+\end{frame} 
 
+\begin{frame}{Jersey - web.xml}
+	\lstinputlisting[language=Java]{code/jersey_web.xml}   
+\end{frame}
+
+\begin{frame}{Jersey - ClientResponse}
+	\lstinputlisting[language=Java]{code/ProductListClient.java}
+\end{frame}
+
+\begin{frame}{Jersey Test Framework}
+	\lstinputlisting[language=Java]{code/JerseyTestFramework.java}
+\end{frame}
+  

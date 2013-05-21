@@ -1,5 +1,22 @@
 \subsection{Restlet}
 	\begin{frame}{Introduction to Restlet}
+		Restlet is a very flexible framework that is suitable for most Web application developments.	
+		
+		\begin{itemize}
+		  \item can be used for both client-side and server-side applications
+		  \item available in the Android, GWT, GAE, JAVA SE, JAVA EE
+		  \item implementing JAX-RS 1.0
+		  \item fully multi-threaded design with per-request resource instances
+		  \item supports HTTP Basic and OAuth authentication
+		  \item configuration possible via Restlet XML and WADL files
+		  \item possible integration with Spring Framework
+		\end{itemize}
+	\end{frame}
 	
+	\begin{frame}{Sample client and server in Restlet} 
+		Server
+		\lstinputlisting[language=JAVA]{code/RestletServer.java}
+		Client
+		\lstinputlisting[language=JAVA]{code/RestletClient.java}
 	\end{frame}
 

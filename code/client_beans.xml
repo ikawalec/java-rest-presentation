@@ -1,0 +1,5 @@
+<bean id="userClient" class="org.apache.cxf.jaxrs.client.WebClient" 
+factory-method="create"> 
+        <constructor-arg type="java.lang.String" 
+        value="http://localhost:8080/api" /> 
+</bean> 

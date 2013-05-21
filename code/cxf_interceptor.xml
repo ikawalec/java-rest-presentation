@@ -1,0 +1,3 @@
+<jaxrs:outInterceptors>
+    <ref bean="sampleInterceptor" />
+</jaxrs:outInterceptors>

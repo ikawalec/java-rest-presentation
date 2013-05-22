@@ -1,5 +1,4 @@
 public class ProductList extends JerseyTest {
-
  public static final String API_URL = "http://localhost:8080/api/";
 	
   public MainTest() throws Exception {
@@ -15,5 +14,4 @@ public class ProductList extends JerseyTest {
     String expectedProduct = "beer";
     assertEquals(expectedProduct, response); 
   }
-
 }

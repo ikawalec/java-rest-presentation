@@ -1,5 +1,18 @@
 \subsection{RestEASY}
 	\begin{frame}{Introduction to RestEASY}
-	
-	\end{frame}
+		\begin{itemize}
+		    \item Powerful library from JBOSS
+		    \item EJB, Seam, Guice, Spring, and Spring MVC integration 
+			\item Rich set of providers for: XML, JSON, YAML and interceptor model
+			\item OAuth2 and Distributed SSO with JBoss
+			\item Extensive documentation  
+		\end{itemize} 
+	\end{frame} 
 
+\begin{frame}{RestEASY Sample Client}
+	Resteasy has a client proxy framework that allows you to use JAX-RS annotations to invoke on a remote HTTP resource.
+	\lstinputlisting[language=Java]{code/RestEasyProxy.java} 
+	
+	After generating a proxy, invoked methods are translated to an HTTP request and posted to the server.
+	\lstinputlisting[language=Java]{code/RestEasyClient.java} 
+\end{frame}      
